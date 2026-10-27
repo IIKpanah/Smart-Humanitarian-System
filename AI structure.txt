@@ -1,0 +1,2 @@
+The Python AI Microservice (flask_ai.py)
+Run this separately on http://localhost:5000 to activate the Machine Learning and VRP features.

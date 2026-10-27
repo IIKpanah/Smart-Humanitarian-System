@@ -1,0 +1,34 @@
+smart-humanitarian-system/
+├── config/
+│   └── config.php                     # System constants, DB credentials, API keys, AI endpoints
+├── includes/
+│   ├── db.php                         # MySQLi/PDO connection & CRUD helpers (Communities, Beneficiaries)
+│   ├── auth.php                       # Session handling, RBAC (ADMIN/NGO/GOV/LEADER/VOLUNTEER), MFA logic
+│   ├── rsa.php                        # Asymmetric encryption for PII (Beneficiary names, GPS) & secure file hashing
+│   ├── file_handler.php               # Uploads, GeoJSON parsing, CSV imports, and physical file management
+│   └── audit.php                      # System logging (who did what, when, from which IP) + log rotation
+├── assets/
+│   ├── css/
+│   │   └── style.css                  # Custom responsive overrides (mobile-first for field volunteers)
+│   ├── js/
+│   │   ├── main.js                    # Chart.js, Leaflet.js initialization, AJAX polling, responsive map handler
+│   │   └── encryption.js              # Client-side hashing for login credentials & MFA TOTP generation
+│   └── images/
+│       ├── markers/                   # GIS map icons (IDP camps, hospitals, distribution centers)
+│       └── reports/                   # Default thumbnails for incident placeholders
+├── uploads/
+│   ├── encrypted/                     # Auto-encrypted field reports & sensitive beneficiary CSVs (RSA protected)
+│   └── decrypted/                     # Temporary, ephemeral storage for AI model processing (auto-purged daily)
+├── logs/
+│   ├── access.log                     # All user access attempts (successful & failed)
+│   ├── ai_cron.log                    # Daily AI vulnerability prediction pipeline logs
+│   └── distribution_optimizer.log     # VRP / Genetic Algorithm route calculation outputs
+├── index.php                          # Landing page / System overview with dynamic KPI widgets
+├── login.php                          # Multi-factor authentication (TOTP + Password) entry point
+├── register.php                       # New NGO/Gov/Volunteer registration (Admin approval workflow)
+├── dashboard.php                      # **Core UI**: Fully responsive GIS Heatmap + AI Prediction Console
+├── upload.php                         # Handles incident reports, beneficiary registers, and distribution proofs
+├── download.php                       # Exports risk reports, distribution plans (PDF/CSV), and audit trails
+├── manage_keys.php                    # Interface for rotating RSA keys, SMS API keys, and AI model retraining triggers
+├── audit_log.php                      # Admin/Government dashboard for monitoring all system transactions
+└── logout.php                         # Secure session destruction + audit trail closure
